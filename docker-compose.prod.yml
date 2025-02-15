@@ -12,6 +12,7 @@ services:
     environment:
       - PYTHONPATH=/app
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    restart: unless-stopped
     command: python -m src.religion_one_thinking.main
 
   api:
@@ -27,6 +28,7 @@ services:
     environment:
       - PYTHONPATH=/app
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    restart: unless-stopped
     command: uvicorn src.religion_one_thinking.api.routes:app --host 0.0.0.0 --port 9001
 
 networks:
